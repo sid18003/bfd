@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+#include <string>
+int main() {
+    // Write C++ code here
+    string str = "Hello World";
+    int Or=0,And=0,Xor=0;
+    
+    for(int i=0;i<str.length();i++)
+    {
+        And = str[i] & 127;
+        cout<<"AND operation : "<<And<<endl;
+    }
+    cout<<endl;
+    
+    for(int i=0;i<str.length();i++)
+    {
+        Or = str[i] | 127;
+        cout<<"OR operation : "<<Or<<endl;
+    }
+    cout<<endl;
+    
+    for(int i=0;i<str.length();i++)
+    {
+        Xor = str[i] ^ 127;
+        cout<<"XOR operation : "<<Xor<<endl;
+    }
+    cout<<endl;
+
+    return 0;
+}
