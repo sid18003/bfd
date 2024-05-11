@@ -1,0 +1,55 @@
+#include<iostream>
+#include<string>
+using namespace std;
+ 
+string encryptMessage(string message, int key)
+{
+	string encryptedMessage = "";
+	for(int j=0; j<key; j++)
+	{
+		for(size_t i=j; i<message.length(); i+=key)
+		{
+			encryptedMessage += message[i];
+		}
+	}
+	return encryptedMessage;
+}
+
+string decryptMessage(string message, int key)
+{
+	int numRows = (message.length() + key-1)/key;
+	int numCols = key;
+	string decryptedMessage = "";
+	for(int i=0; i<numRows; i++)
+	{
+		for(int j=0; j<numCols; j++)
+		{
+			int index = j*numRows + i;
+			if(index<message.length())
+			{
+				decryptedMessage += message[index];
+			}
+		}
+	}
+	return decryptedMessage;
+}
+
+int main()
+{
+	string message;
+	int key;
+	
+	cout<<"enter the message to be encrypted:";
+	getline(cin,message);
+	
+	cout<<"enter the value of key:";
+	cin>>key;
+	
+	string encryptedMessage = encryptMessage(message,key);
+	cout<<"encrypted message:"<<encryptedMessage<<endl;
+	
+	string decryptedMessage = decryptMessage(encryptedMessage,key);
+	cout<<"decrypted message:"<<decryptedMessage<<endl;
+	
+	return 0;
+}
